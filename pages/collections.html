@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collections — Bharni Gems</title>
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <style>
+    /* ── Sticky tab nav ─────────────────────────────────────── */
+    .cat-tabs {
+      position: sticky; top: 72px; z-index: 100;
+      display: flex; gap: 0;
+      background: var(--obsidian, #0b0a08);
+      border-bottom: 1px solid var(--line);
+      padding: 0 80px;
+      overflow-x: auto; scrollbar-width: none;
+    }
+    .cat-tabs::-webkit-scrollbar { display: none; }
+    .cat-tab {
+      font-family: var(--font-body);
+      font-size: 0.65rem; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: #ffffff; padding: 20px 28px;
+      border-bottom: 2px solid transparent;
+      cursor: pointer; background: none;
+      border-top: none; border-left: none; border-right: none;
+      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .cat-tab:hover { color: var(--gold); }
+    .cat-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* ── Page body ──────────────────────────────────────────── */
+    .coll-body { padding: 0 0 160px; }
+
+    /* ── Category section ───────────────────────────────────── */
+    .cat-section {
+      padding-top: 100px;
+      border-top: 1px solid rgba(201,168,76,0.12);
+    }
+    .cat-section:first-child { border-top: none; }
+
+    /* ── Category header ────────────────────────────────────── */
+    .cat-header {
+      text-align: center;
+      padding: 0 80px 80px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 100px;
+    }
+    .cat-header .section-label { display: block; margin-bottom: 16px; }
+    .cat-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300; line-height: 1;
+      color: #ffffff;
+    }
+    .cat-title em { color: var(--gold); font-style: italic; }
+    .cat-desc {
+      font-family: var(--font-statement);
+      font-size: 0.92rem; letter-spacing: 0.06em;
+      color: #ffffff; margin-top: 20px;
+    }
+
+    /* ── Grid ───────────────────────────────────────────────── */
+    .product-grid {
+      width: 65%; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .grid-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding: 40px 0;
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+    }
+    .grid-row:last-child { border-bottom: none; }
+
+    /* ── Card ───────────────────────────────────────────────── */
+    .pcard {
+      display: block; text-decoration: none;
+      position: relative; background: #000;
+      overflow: hidden; cursor: pointer;
+      transition: opacity 0.4s ease;
+    }
+    .pcard:hover { opacity: 0.85; }
+    .pcard::after {
+      content: ''; position: absolute; inset: 0;
+      border: 1px solid rgba(201,168,76,0);
+      transition: border-color 0.4s ease;
+      pointer-events: none; z-index: 3;
+    }
+    .pcard:hover::after { border-color: rgba(201,168,76,0.5); }
+    .pcard__images {
+      position: relative; aspect-ratio: 3/4;
+      overflow: hidden; background: #000;
+    }
+    .pcard__img-product,
+    .pcard__img-model {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      transition: opacity 0.7s ease;
+    }
+    .pcard__img-product { object-fit: cover; opacity: 1; z-index: 1; }
+    .pcard__img-model   { object-fit: contain; background: #fff; opacity: 0; z-index: 2; }
+    .pcard:hover .pcard__img-product { opacity: 0; }
+    .pcard:hover .pcard__img-model   { opacity: 1; }
+
+    /* ── Trade bar ──────────────────────────────────────────── */
+    .trade-bar {
+      width: 65%; margin: 80px auto 0;
+      padding: 52px 64px;
+      background: var(--obsidian);
+      border: 1px solid var(--line);
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 40px;
+    }
+    .trade-bar h3 {
+      font-family: var(--font-statement);
+      font-size: clamp(1.1rem,1.8vw,1.45rem); font-weight: 400; letter-spacing: 0.05em;
+      color: #ffffff; margin-bottom: 8px;
+    }
+    .trade-bar p { font-size: 0.92rem; letter-spacing: 0.02em; color: #ffffff; }
+
+    /* ── Section spacer ─────────────────────────────────────── */
+    .section-end { padding-bottom: 120px; }
+
+    .single-trade-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 32px 80px;
+      border-top: 1px solid var(--line);
+      margin-top: 40px;
+    }
+
+    .single-trade-bar p {
+      font-size: 0.92rem;
+      color: #ffffff;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Mobile ──────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      /* Scrollable tabs - no wrapping */
+      .cat-tabs {
+        padding: 0 12px;
+        top: 56px;
+        gap: 4px;
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        flex-wrap: nowrap;
+      }
+      .cat-tabs::-webkit-scrollbar { display: none; }
+      .cat-tab {
+        font-size: 0.48rem;
+        padding: 8px 12px;
+        letter-spacing: 0.12em;
+        flex-shrink: 0;
+        white-space: nowrap;
+      }
+      .cat-section   { padding-top: 60px; }
+      .cat-header    { padding: 0 16px 36px; margin-bottom: 48px; }
+      .cat-header h2 { font-size: clamp(1.8rem, 8vw, 2.6rem); }
+      .product-grid  { width: 100%; padding: 0 12px; }
+      .grid-row      { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .collections-end-cta { padding: 56px 16px; }
+      .trade-bar     { width: 100%; padding: 28px 16px; flex-direction: column; gap: 16px; text-align: center; }
+    }
+
+    /* ── Small mobile ─────────────────────────────────────── */
+    @media (max-width: 430px) {
+      .product-grid  { padding: 0 8px; }
+      .grid-row      { gap: 6px; }
+      .cat-header    { padding: 0 12px 28px; }
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a class="nav__logo" href="../index.html"><span style="font-family:var(--font-brand);font-size:1.8rem;font-weight:normal;letter-spacing:0.02em">Bharni Gems</span></a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="manifesto.html">Manifesto</a></li>
+      <li><a href="vision.html">Vision</a></li>
+      <li><a href="collections.html" class="active">Collections</a></li>
+      <li><a href="contact.html">Connect</a></li>
+    </ul>
+    <button class="nav__hamburger" id="navHamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ── Sticky category tabs ──────────────────────────────── -->
+  <div class="cat-tabs" id="catTabs">
+    <button class="cat-tab active" onclick="scrollToSection('rings', this)">Rings</button>
+    <button class="cat-tab" onclick="scrollToSection('gents-rings', this)">Gents Rings</button>
+    <button class="cat-tab" onclick="scrollToSection('necklaces', this)">Necklaces</button>
+    <button class="cat-tab" onclick="scrollToSection('bangles', this)">Bangles</button>
+    <button class="cat-tab" onclick="scrollToSection('earrings', this)">Earrings</button>
+    <button class="cat-tab" onclick="scrollToSection('pendants', this)">Pendants</button>
+    <button class="cat-tab" onclick="scrollToSection('sets', this)">Tanmaniya</button>
+    <button class="cat-tab" onclick="scrollToSection('bracelets', this)">Bracelets</button>
+  </div>
+
+  <div class="coll-body">
+
+    <!-- ════════════════════════════════════════════════════════
+         01 · RINGS
+    ═════════════════════════════════════════════════════════ -->
+    <section id="rings" class="cat-section">
+<div class="product-grid">
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-01-model.png" alt="Ring 1"><img class="pcard__img-model" src="../assets/images/rings/ring-01-product.jpg" alt="Ring 1 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-02-model.png" alt="Ring 2"><img class="pcard__img-model" src="../assets/images/rings/ring-02-product.jpg" alt="Ring 2 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-03-model.png" alt="Ring 3"><img class="pcard__img-model" src="../assets/images/rings/ring-03-product.jpg" alt="Ring 3 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-04-model.png" alt="Ring 4"><img class="pcard__img-model" src="../assets/images/rings/ring-04-product.jpg" alt="Ring 4 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-05-model.png" alt="Ring 5"><img class="pcard__img-model" src="../assets/images/rings/ring-05-product.jpg" alt="Ring 5 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-06-model.png" alt="Ring 6"><img class="pcard__img-model" src="../assets/images/rings/ring-06-product.jpg" alt="Ring 6 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-07-model.png" alt="Ring 7"><img class="pcard__img-model" src="../assets/images/rings/ring-07-product.jpg" alt="Ring 7 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-08-model.png" alt="Ring 8"><img class="pcard__img-model" src="../assets/images/rings/ring-08-product.jpg" alt="Ring 8 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-09-model.png" alt="Ring 9"><img class="pcard__img-model" src="../assets/images/rings/ring-09-product.jpg" alt="Ring 9 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-10-model.png" alt="Ring 10"><img class="pcard__img-model" src="../assets/images/rings/ring-10-product.jpg" alt="Ring 10 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-11-model.png" alt="Ring 11"><img class="pcard__img-model" src="../assets/images/rings/ring-11-product.jpg" alt="Ring 11 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-12-model.png" alt="Ring 12"><img class="pcard__img-model" src="../assets/images/rings/ring-12-product.jpg" alt="Ring 12 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-13-model.png" alt="Ring 13"><img class="pcard__img-model" src="../assets/images/rings/ring-13-product.jpg" alt="Ring 13 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-14-model.png" alt="Ring 14"><img class="pcard__img-model" src="../assets/images/rings/ring-14-product.jpg" alt="Ring 14 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-15-model.png" alt="Ring 15"><img class="pcard__img-model" src="../assets/images/rings/ring-15-product.jpg" alt="Ring 15 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-16-model.png" alt="Ring 16"><img class="pcard__img-model" src="../assets/images/rings/ring-16-product.jpg" alt="Ring 16 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-17-model.png" alt="Ring 17"><img class="pcard__img-model" src="../assets/images/rings/ring-17-product.jpg" alt="Ring 17 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-18-model.png" alt="Ring 18"><img class="pcard__img-model" src="../assets/images/rings/ring-18-product.jpg" alt="Ring 18 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-19-model.png" alt="Ring 19"><img class="pcard__img-model" src="../assets/images/rings/ring-19-product.jpg" alt="Ring 19 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-20-model.png" alt="Ring 20"><img class="pcard__img-model" src="../assets/images/rings/ring-20-product.jpg" alt="Ring 20 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-21-model.png" alt="Ring 21"><img class="pcard__img-model" src="../assets/images/rings/ring-21-product.jpg" alt="Ring 21 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-22-model.png" alt="Ring 22"><img class="pcard__img-model" src="../assets/images/rings/ring-22-product.jpg" alt="Ring 22 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-23-model.png" alt="Ring 23"><img class="pcard__img-model" src="../assets/images/rings/ring-23-product.jpg" alt="Ring 23 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-24-model.png" alt="Ring 24"><img class="pcard__img-model" src="../assets/images/rings/ring-24-product.jpg" alt="Ring 24 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-25-model.png" alt="Ring 25"><img class="pcard__img-model" src="../assets/images/rings/ring-25-product.jpg" alt="Ring 25 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-26-model.png" alt="Ring 26"><img class="pcard__img-model" src="../assets/images/rings/ring-26-product.jpg" alt="Ring 26 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-27-model.png" alt="Ring 27"><img class="pcard__img-model" src="../assets/images/rings/ring-27-product.jpg" alt="Ring 27 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-28-model.png" alt="Ring 28"><img class="pcard__img-model" src="../assets/images/rings/ring-28-product.jpg" alt="Ring 28 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/rings/ring-29-model.png" alt="Ring 29"><img class="pcard__img-model" src="../assets/images/rings/ring-29-product.jpg" alt="Ring 29 product"></div></div>
+        </div>
+      </div>
+      </div>
+
+    <!-- ════════════════════════════════════════════════════════
+         01B · GENTS RINGS
+    ═════════════════════════════════════════════════════════ -->
+    <section id="gents-rings" class="cat-section">
+<div class="product-grid">
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/gents-rings/gents-ring-01-model.png" alt="Gents Ring 1"><img class="pcard__img-model" src="../assets/images/gents-rings/gents-ring-01-product.jpg" alt="Gents Ring 1 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/gents-rings/gents-ring-02-model.png" alt="Gents Ring 2"><img class="pcard__img-model" src="../assets/images/gents-rings/gents-ring-02-product.jpg" alt="Gents Ring 2 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/gents-rings/gents-ring-03-model.png" alt="Gents Ring 3"><img class="pcard__img-model" src="../assets/images/gents-rings/gents-ring-03-product.jpg" alt="Gents Ring 3 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/gents-rings/gents-ring-04-model.png" alt="Gents Ring 4"><img class="pcard__img-model" src="../assets/images/gents-rings/gents-ring-04-product.jpg" alt="Gents Ring 4 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/gents-rings/gents-ring-05-model.png" alt="Gents Ring 5"><img class="pcard__img-model" src="../assets/images/gents-rings/gents-ring-05-product.jpg" alt="Gents Ring 5 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/gents-rings/gents-ring-06-model.png" alt="Gents Ring 6"><img class="pcard__img-model" src="../assets/images/gents-rings/gents-ring-06-product.jpg" alt="Gents Ring 6 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/gents-rings/gents-ring-07-model.png" alt="Gents Ring 7"><img class="pcard__img-model" src="../assets/images/gents-rings/gents-ring-07-product.jpg" alt="Gents Ring 7 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/gents-rings/gents-ring-08-model.png" alt="Gents Ring 8"><img class="pcard__img-model" src="../assets/images/gents-rings/gents-ring-08-product.jpg" alt="Gents Ring 8 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/gents-rings/gents-ring-09-model.png" alt="Gents Ring 9"><img class="pcard__img-model" src="../assets/images/gents-rings/gents-ring-09-product.jpg" alt="Gents Ring 9 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/gents-rings/gents-ring-10-model.png" alt="Gents Ring 10"><img class="pcard__img-model" src="../assets/images/gents-rings/gents-ring-10-product.jpg" alt="Gents Ring 10 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/gents-rings/gents-ring-11-model.png" alt="Gents Ring 11"><img class="pcard__img-model" src="../assets/images/gents-rings/gents-ring-11-product.jpg" alt="Gents Ring 11 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/gents-rings/gents-ring-12-model.png" alt="Gents Ring 12"><img class="pcard__img-model" src="../assets/images/gents-rings/gents-ring-12-product.jpg" alt="Gents Ring 12 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/gents-rings/gents-ring-13-model.png" alt="Gents Ring 13"><img class="pcard__img-model" src="../assets/images/gents-rings/gents-ring-13-product.jpg" alt="Gents Ring 13 product"></div></div>
+        </div>
+      </div>
+      </div>
+
+    <!-- ════════════════════════════════════════════════════════
+         02 · NECKLACES
+    ═════════════════════════════════════════════════════════ -->
+    <section id="necklaces" class="cat-section">
+<div class="product-grid">
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/necklaces/necklace-01-model.png" alt="Diamond necklace 1 worn by model | Bharni Gems"><img class="pcard__img-model" src="../assets/images/necklaces/necklace-01-product.jpg" alt="Diamond necklace 1 - product shot | Bharni Gems"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/necklaces/necklace-02-model.png" alt="Diamond necklace 2 worn by model | Bharni Gems"><img class="pcard__img-model" src="../assets/images/necklaces/necklace-02-product.jpg" alt="Diamond necklace 2 - product shot | Bharni Gems"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/necklaces/necklace-03-model.png" alt="Diamond necklace 3 worn by model | Bharni Gems"><img class="pcard__img-model" src="../assets/images/necklaces/necklace-03-product.jpg" alt="Diamond necklace 3 - product shot | Bharni Gems"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/necklaces/necklace-04-model.png" alt="Diamond necklace 4 worn by model | Bharni Gems"><img class="pcard__img-model" src="../assets/images/necklaces/necklace-04-product.jpg" alt="Diamond necklace 4 - product shot | Bharni Gems"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/necklaces/necklace-05-model.png" alt="Diamond necklace 5 worn by model | Bharni Gems"><img class="pcard__img-model" src="../assets/images/necklaces/necklace-05-product.jpg" alt="Diamond necklace 5 - product shot | Bharni Gems"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/necklaces/necklace-06-model.png" alt="Diamond necklace 6 worn by model | Bharni Gems"><img class="pcard__img-model" src="../assets/images/necklaces/necklace-06-product.jpg" alt="Diamond necklace 6 - product shot | Bharni Gems"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/necklaces/necklace-07-model.png" alt="Diamond necklace 7 worn by model | Bharni Gems"><img class="pcard__img-model" src="../assets/images/necklaces/necklace-07-product.jpg" alt="Diamond necklace 7 - product shot | Bharni Gems"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/necklaces/necklace-08-model.png" alt="Diamond necklace 8 worn by model | Bharni Gems"><img class="pcard__img-model" src="../assets/images/necklaces/necklace-08-product.jpg" alt="Diamond necklace 8 - product shot | Bharni Gems"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/necklaces/necklace-09-model.png" alt="Diamond necklace 9 worn by model | Bharni Gems"><img class="pcard__img-model" src="../assets/images/necklaces/necklace-09-product.jpg" alt="Diamond necklace 9 - product shot | Bharni Gems"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/necklaces/necklace-10-model.png" alt="Diamond necklace 10 worn by model | Bharni Gems"><img class="pcard__img-model" src="../assets/images/necklaces/necklace-10-product.jpg" alt="Diamond necklace 10 - product shot | Bharni Gems"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/necklaces/necklace-11-model.png" alt="Diamond necklace 11 worn by model | Bharni Gems"><img class="pcard__img-model" src="../assets/images/necklaces/necklace-11-product.jpg" alt="Diamond necklace 11 - product shot | Bharni Gems"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/necklaces/necklace-12-model.png" alt="Diamond necklace 12 worn by model | Bharni Gems"><img class="pcard__img-model" src="../assets/images/necklaces/necklace-12-product.jpg" alt="Diamond necklace 12 - product shot | Bharni Gems"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/necklaces/necklace-13-model.png" alt="Diamond necklace 13 worn by model | Bharni Gems"><img class="pcard__img-model" src="../assets/images/necklaces/necklace-13-product.jpg" alt="Diamond necklace 13 - product shot | Bharni Gems"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/necklaces/necklace-14-model.png" alt="Diamond necklace 14 worn by model | Bharni Gems"><img class="pcard__img-model" src="../assets/images/necklaces/necklace-14-product.jpg" alt="Diamond necklace 14 - product shot | Bharni Gems"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/necklaces/necklace-15-model.png" alt="Diamond necklace 15 worn by model | Bharni Gems"><img class="pcard__img-model" src="../assets/images/necklaces/necklace-15-product.jpg" alt="Diamond necklace 15 - product shot | Bharni Gems"></div></div>
+        </div>
+      </div>
+      </div>>
+
+    <!-- ════════════════════════════════════════════════════════
+         03 · BANGLES
+    ═════════════════════════════════════════════════════════ -->
+    <section id="bangles" class="cat-section">
+<div class="product-grid">
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/bangles/bangle-1-model.png" alt="Diamond Bangle CCBC00236"><img class="pcard__img-model" src="../assets/images/bangles/bangle-1-product.jpg" alt="Diamond Bangle CCBC00236"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/bangles/bangle-2-model.png" alt="Diamond Bangle CBC00008"><img class="pcard__img-model" src="../assets/images/bangles/bangle-2-product.jpg" alt="Diamond Bangle CBC00008"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/bangles/bangle-3-model.png" alt="Diamond Bangle BG1469"><img class="pcard__img-model" src="../assets/images/bangles/bangle-3-product.jpg" alt="Diamond Bangle BG1469"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/bangles/bangle-4-model.png" alt="Diamond Bangle BG50789A"><img class="pcard__img-model" src="../assets/images/bangles/bangle-4-product.jpg" alt="Diamond Bangle BG50789A"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/bangles/bangle-5-model.png" alt="Diamond Bangle CCBC00007"><img class="pcard__img-model" src="../assets/images/bangles/bangle-5-product.jpg" alt="Diamond Bangle CCBC00007"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/bangles/bangle-6-model.png" alt="Diamond Bangle LG37586"><img class="pcard__img-model" src="../assets/images/bangles/bangle-6-product.jpg" alt="Diamond Bangle LG37586"></div></div>
+        </div>
+      </div>
+<a href="contact.html" class="btn"><span>Connect</span><svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h14M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+      </div>
+</section>
+
+    <!-- ════════════════════════════════════════════════════════
+         04 · EARRINGS
+    ═════════════════════════════════════════════════════════ -->
+    <section id="earrings" class="cat-section">
+<div class="product-grid">
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-01-model.png" alt="Earring 1"><img class="pcard__img-model" src="../assets/images/earrings/earring-01-product.jpg" alt="Earring 1 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-02-model.png" alt="Earring 2"><img class="pcard__img-model" src="../assets/images/earrings/earring-02-product.jpg" alt="Earring 2 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-03-model.png" alt="Earring 3"><img class="pcard__img-model" src="../assets/images/earrings/earring-03-product.jpg" alt="Earring 3 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-04-model.png" alt="Earring 4"><img class="pcard__img-model" src="../assets/images/earrings/earring-04-product.jpg" alt="Earring 4 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-05-model.png" alt="Earring 5"><img class="pcard__img-model" src="../assets/images/earrings/earring-05-product.jpg" alt="Earring 5 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-06-model.png" alt="Earring 6"><img class="pcard__img-model" src="../assets/images/earrings/earring-06-product.jpg" alt="Earring 6 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-07-model.png" alt="Earring 7"><img class="pcard__img-model" src="../assets/images/earrings/earring-07-product.jpg" alt="Earring 7 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-08-model.png" alt="Earring 8"><img class="pcard__img-model" src="../assets/images/earrings/earring-08-product.jpg" alt="Earring 8 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-09-model.png" alt="Earring 9"><img class="pcard__img-model" src="../assets/images/earrings/earring-09-product.jpg" alt="Earring 9 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-10-model.png" alt="Earring 10"><img class="pcard__img-model" src="../assets/images/earrings/earring-10-product.jpg" alt="Earring 10 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-11-model.png" alt="Earring 11"><img class="pcard__img-model" src="../assets/images/earrings/earring-11-product.jpg" alt="Earring 11 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-12-model.png" alt="Earring 12"><img class="pcard__img-model" src="../assets/images/earrings/earring-12-product.jpg" alt="Earring 12 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-13-model.png" alt="Earring 13"><img class="pcard__img-model" src="../assets/images/earrings/earring-13-product.jpg" alt="Earring 13 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-14-model.png" alt="Earring 14"><img class="pcard__img-model" src="../assets/images/earrings/earring-14-product.jpg" alt="Earring 14 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-15-model.png" alt="Earring 15"><img class="pcard__img-model" src="../assets/images/earrings/earring-15-product.jpg" alt="Earring 15 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-16-model.png" alt="Earring 16"><img class="pcard__img-model" src="../assets/images/earrings/earring-16-product.jpg" alt="Earring 16 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-17-model.png" alt="Earring 17"><img class="pcard__img-model" src="../assets/images/earrings/earring-17-product.jpg" alt="Earring 17 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-18-model.png" alt="Earring 18"><img class="pcard__img-model" src="../assets/images/earrings/earring-18-product.jpg" alt="Earring 18 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-19-model.png" alt="Earring 19"><img class="pcard__img-model" src="../assets/images/earrings/earring-19-product.jpg" alt="Earring 19 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-20-model.png" alt="Earring 20"><img class="pcard__img-model" src="../assets/images/earrings/earring-20-product.jpg" alt="Earring 20 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-21-model.png" alt="Earring 21"><img class="pcard__img-model" src="../assets/images/earrings/earring-21-product.jpg" alt="Earring 21 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-22-model.png" alt="Earring 22"><img class="pcard__img-model" src="../assets/images/earrings/earring-22-product.jpg" alt="Earring 22 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-23-model.png" alt="Earring 23"><img class="pcard__img-model" src="../assets/images/earrings/earring-23-product.jpg" alt="Earring 23 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-24-model.png" alt="Earring 24"><img class="pcard__img-model" src="../assets/images/earrings/earring-24-product.jpg" alt="Earring 24 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-25-model.png" alt="Earring 25"><img class="pcard__img-model" src="../assets/images/earrings/earring-25-product.jpg" alt="Earring 25 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-26-model.png" alt="Earring 26"><img class="pcard__img-model" src="../assets/images/earrings/earring-26-product.jpg" alt="Earring 26 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-27-model.png" alt="Earring 27"><img class="pcard__img-model" src="../assets/images/earrings/earring-27-product.jpg" alt="Earring 27 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-28-model.png" alt="Earring 28"><img class="pcard__img-model" src="../assets/images/earrings/earring-28-product.jpg" alt="Earring 28 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-29-model.png" alt="Earring 29"><img class="pcard__img-model" src="../assets/images/earrings/earring-29-product.jpg" alt="Earring 29 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-30-model.png" alt="Earring 30"><img class="pcard__img-model" src="../assets/images/earrings/earring-30-product.jpg" alt="Earring 30 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-31-model.png" alt="Earring 31"><img class="pcard__img-model" src="../assets/images/earrings/earring-31-product.jpg" alt="Earring 31 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-32-model.png" alt="Earring 32"><img class="pcard__img-model" src="../assets/images/earrings/earring-32-product.jpg" alt="Earring 32 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-33-model.png" alt="Earring 33"><img class="pcard__img-model" src="../assets/images/earrings/earring-33-product.jpg" alt="Earring 33 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-34-model.png" alt="Earring 34"><img class="pcard__img-model" src="../assets/images/earrings/earring-34-product.jpg" alt="Earring 34 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-35-model.png" alt="Earring 35"><img class="pcard__img-model" src="../assets/images/earrings/earring-35-product.jpg" alt="Earring 35 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-36-model.png" alt="Earring 36"><img class="pcard__img-model" src="../assets/images/earrings/earring-36-product.jpg" alt="Earring 36 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-37-model.png" alt="Earring 37"><img class="pcard__img-model" src="../assets/images/earrings/earring-37-product.jpg" alt="Earring 37 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-38-model.png" alt="Earring 38"><img class="pcard__img-model" src="../assets/images/earrings/earring-38-product.jpg" alt="Earring 38 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-39-model.png" alt="Earring 39"><img class="pcard__img-model" src="../assets/images/earrings/earring-39-product.jpg" alt="Earring 39 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-40-model.png" alt="Earring 40"><img class="pcard__img-model" src="../assets/images/earrings/earring-40-product.jpg" alt="Earring 40 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-41-model.png" alt="Earring 41"><img class="pcard__img-model" src="../assets/images/earrings/earring-41-product.jpg" alt="Earring 41 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-42-model.png" alt="Earring 42"><img class="pcard__img-model" src="../assets/images/earrings/earring-42-product.jpg" alt="Earring 42 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-43-model.png" alt="Earring 43"><img class="pcard__img-model" src="../assets/images/earrings/earring-43-product.jpg" alt="Earring 43 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-44-model.png" alt="Earring 44"><img class="pcard__img-model" src="../assets/images/earrings/earring-44-product.jpg" alt="Earring 44 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-45-model.png" alt="Earring 45"><img class="pcard__img-model" src="../assets/images/earrings/earring-45-product.jpg" alt="Earring 45 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-46-model.png" alt="Earring 46"><img class="pcard__img-model" src="../assets/images/earrings/earring-46-product.jpg" alt="Earring 46 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-47-model.png" alt="Earring 47"><img class="pcard__img-model" src="../assets/images/earrings/earring-47-product.jpg" alt="Earring 47 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-48-model.png" alt="Earring 48"><img class="pcard__img-model" src="../assets/images/earrings/earring-48-product.jpg" alt="Earring 48 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-49-model.png" alt="Earring 49"><img class="pcard__img-model" src="../assets/images/earrings/earring-49-product.jpg" alt="Earring 49 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-50-model.png" alt="Earring 50"><img class="pcard__img-model" src="../assets/images/earrings/earring-50-product.jpg" alt="Earring 50 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-51-model.png" alt="Earring 51"><img class="pcard__img-model" src="../assets/images/earrings/earring-51-product.jpg" alt="Earring 51 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-52-model.png" alt="Earring 52"><img class="pcard__img-model" src="../assets/images/earrings/earring-52-product.jpg" alt="Earring 52 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-53-model.png" alt="Earring 53"><img class="pcard__img-model" src="../assets/images/earrings/earring-53-product.jpg" alt="Earring 53 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-54-model.png" alt="Earring 54"><img class="pcard__img-model" src="../assets/images/earrings/earring-54-product.jpg" alt="Earring 54 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-55-model.png" alt="Earring 55"><img class="pcard__img-model" src="../assets/images/earrings/earring-55-product.jpg" alt="Earring 55 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-56-model.png" alt="Earring 56"><img class="pcard__img-model" src="../assets/images/earrings/earring-56-product.jpg" alt="Earring 56 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-57-model.png" alt="Earring 57"><img class="pcard__img-model" src="../assets/images/earrings/earring-57-product.jpg" alt="Earring 57 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-58-model.png" alt="Earring 58"><img class="pcard__img-model" src="../assets/images/earrings/earring-58-product.jpg" alt="Earring 58 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-59-model.png" alt="Earring 59"><img class="pcard__img-model" src="../assets/images/earrings/earring-59-product.jpg" alt="Earring 59 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-60-model.png" alt="Earring 60"><img class="pcard__img-model" src="../assets/images/earrings/earring-60-product.jpg" alt="Earring 60 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-62-model.png" alt="Earring 62"><img class="pcard__img-model" src="../assets/images/earrings/earring-62-product.jpg" alt="Earring 62 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-63-model.png" alt="Earring 63"><img class="pcard__img-model" src="../assets/images/earrings/earring-63-product.jpg" alt="Earring 63 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/earrings/earring-64-model.png" alt="Earring 64"><img class="pcard__img-model" src="../assets/images/earrings/earring-64-product.jpg" alt="Earring 64 product"></div></div>
+        </div>
+      </div>
+      </div>
+
+    <!-- ════════════════════════════════════════════════════════
+         05 · PENDANTS
+    ═════════════════════════════════════════════════════════ -->
+    <section id="pendants" class="cat-section">
+<div class="product-grid">
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/pendants/pendant-01-model.png" alt="Pendant 1"><img class="pcard__img-model" src="../assets/images/pendants/pendant-01-product.jpg" alt="Pendant 1 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/pendants/pendant-02-model.png" alt="Pendant 2"><img class="pcard__img-model" src="../assets/images/pendants/pendant-02-product.jpg" alt="Pendant 2 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/pendants/pendant-03-model.png" alt="Pendant 3"><img class="pcard__img-model" src="../assets/images/pendants/pendant-03-product.jpg" alt="Pendant 3 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/pendants/pendant-04-model.png" alt="Pendant 4"><img class="pcard__img-model" src="../assets/images/pendants/pendant-04-product.jpg" alt="Pendant 4 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/pendants/pendant-05-model.png" alt="Pendant 5"><img class="pcard__img-model" src="../assets/images/pendants/pendant-05-product.jpg" alt="Pendant 5 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/pendants/pendant-06-model.png" alt="Pendant 6"><img class="pcard__img-model" src="../assets/images/pendants/pendant-06-product.jpg" alt="Pendant 6 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/pendants/pendant-07-model.png" alt="Pendant 7"><img class="pcard__img-model" src="../assets/images/pendants/pendant-07-product.jpg" alt="Pendant 7 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/pendants/pendant-08-model.png" alt="Pendant 8"><img class="pcard__img-model" src="../assets/images/pendants/pendant-08-product.jpg" alt="Pendant 8 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/pendants/pendant-09-model.png" alt="Pendant 9"><img class="pcard__img-model" src="../assets/images/pendants/pendant-09-product.jpg" alt="Pendant 9 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/pendants/pendant-10-model.png" alt="Pendant 10"><img class="pcard__img-model" src="../assets/images/pendants/pendant-10-product.jpg" alt="Pendant 10 product"></div></div>
+        </div>
+      </div>
+<a href="contact.html" class="btn"><span>Connect</span><svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h14M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+      </div>
+</section>
+
+    <!-- ════════════════════════════════════════════════════════
+         06 · TANMANIYA
+    ═════════════════════════════════════════════════════════ -->
+    <section id="sets" class="cat-section">
+<div class="product-grid">
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/tanmaniya/tanmaniya-01-model.png" alt="Tanmaniya 1"><img class="pcard__img-model" src="../assets/images/tanmaniya/tanmaniya-01-product.jpg" alt="Tanmaniya 1 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/tanmaniya/tanmaniya-02-model.png" alt="Tanmaniya 2"><img class="pcard__img-model" src="../assets/images/tanmaniya/tanmaniya-02-product.jpg" alt="Tanmaniya 2 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/tanmaniya/tanmaniya-03-model.png" alt="Tanmaniya 3"><img class="pcard__img-model" src="../assets/images/tanmaniya/tanmaniya-03-product.jpg" alt="Tanmaniya 3 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/tanmaniya/tanmaniya-04-model.png" alt="Tanmaniya 4"><img class="pcard__img-model" src="../assets/images/tanmaniya/tanmaniya-04-product.jpg" alt="Tanmaniya 4 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/tanmaniya/tanmaniya-05-model.png" alt="Tanmaniya 5"><img class="pcard__img-model" src="../assets/images/tanmaniya/tanmaniya-05-product.jpg" alt="Tanmaniya 5 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/tanmaniya/tanmaniya-06-model.png" alt="Tanmaniya 6"><img class="pcard__img-model" src="../assets/images/tanmaniya/tanmaniya-06-product.jpg" alt="Tanmaniya 6 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/tanmaniya/tanmaniya-07-model.png" alt="Tanmaniya 7"><img class="pcard__img-model" src="../assets/images/tanmaniya/tanmaniya-07-product.jpg" alt="Tanmaniya 7 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/tanmaniya/tanmaniya-08-model.png" alt="Tanmaniya 8"><img class="pcard__img-model" src="../assets/images/tanmaniya/tanmaniya-08-product.jpg" alt="Tanmaniya 8 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/tanmaniya/tanmaniya-09-model.png" alt="Tanmaniya 9"><img class="pcard__img-model" src="../assets/images/tanmaniya/tanmaniya-09-product.jpg" alt="Tanmaniya 9 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/tanmaniya/tanmaniya-10-model.png" alt="Tanmaniya 10"><img class="pcard__img-model" src="../assets/images/tanmaniya/tanmaniya-10-product.jpg" alt="Tanmaniya 10 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/tanmaniya/tanmaniya-11-model.png" alt="Tanmaniya 11"><img class="pcard__img-model" src="../assets/images/tanmaniya/tanmaniya-11-product.jpg" alt="Tanmaniya 11 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/tanmaniya/tanmaniya-12-model.png" alt="Tanmaniya 12"><img class="pcard__img-model" src="../assets/images/tanmaniya/tanmaniya-12-product.jpg" alt="Tanmaniya 12 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/tanmaniya/tanmaniya-13-model.png" alt="Tanmaniya 13"><img class="pcard__img-model" src="../assets/images/tanmaniya/tanmaniya-13-product.jpg" alt="Tanmaniya 13 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/tanmaniya/tanmaniya-14-model.png" alt="Tanmaniya 14"><img class="pcard__img-model" src="../assets/images/tanmaniya/tanmaniya-14-product.jpg" alt="Tanmaniya 14 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/tanmaniya/tanmaniya-15-model.png" alt="Tanmaniya 15"><img class="pcard__img-model" src="../assets/images/tanmaniya/tanmaniya-15-product.jpg" alt="Tanmaniya 15 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/tanmaniya/tanmaniya-16-model.png" alt="Tanmaniya 16"><img class="pcard__img-model" src="../assets/images/tanmaniya/tanmaniya-16-product.jpg" alt="Tanmaniya 16 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/tanmaniya/tanmaniya-17-model.png" alt="Tanmaniya 17"><img class="pcard__img-model" src="../assets/images/tanmaniya/tanmaniya-17-product.jpg" alt="Tanmaniya 17 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/tanmaniya/tanmaniya-18-model.png" alt="Tanmaniya 18"><img class="pcard__img-model" src="../assets/images/tanmaniya/tanmaniya-18-product.jpg" alt="Tanmaniya 18 product"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/tanmaniya/tanmaniya-19-model.png" alt="Tanmaniya 19"><img class="pcard__img-model" src="../assets/images/tanmaniya/tanmaniya-19-product.jpg" alt="Tanmaniya 19 product"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/tanmaniya/tanmaniya-20-model.png" alt="Tanmaniya 20"><img class="pcard__img-model" src="../assets/images/tanmaniya/tanmaniya-20-product.jpg" alt="Tanmaniya 20 product"></div></div>
+        </div>
+      </div>
+      </div></div>
+      </div>
+    </section>
+
+
+    <section id="bracelets" class="cat-section">
+      <div class="cat-section__header">
+        <h2 class="cat-section__title">Bracelets</h2>
+      </div>
+      <div class="product-grid">
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/bracelets/bracelet-1-model.png" alt="Bracelet ROB19246"><img class="pcard__img-model" src="../assets/images/bracelets/bracelet-1-product.jpg" alt="Bracelet ROB19246"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/bracelets/bracelet-2-model.png" alt="Bracelet ROB18262"><img class="pcard__img-model" src="../assets/images/bracelets/bracelet-2-product.jpg" alt="Bracelet ROB18262"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/bracelets/bracelet-3-model.png" alt="Bracelet BRF10004FSF"><img class="pcard__img-model" src="../assets/images/bracelets/bracelet-3-product.jpg" alt="Bracelet BRF10004FSF"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/bracelets/bracelet-4-model.png" alt="Bracelet ROB19253"><img class="pcard__img-model" src="../assets/images/bracelets/bracelet-4-product.jpg" alt="Bracelet ROB19253"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/bracelets/bracelet-5-model.png" alt="Bracelet RDBR00149"><img class="pcard__img-model" src="../assets/images/bracelets/bracelet-5-product.jpg" alt="Bracelet RDBR00149"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/bracelets/bracelet-6-model.png" alt="Bracelet BRQ10009HOC"><img class="pcard__img-model" src="../assets/images/bracelets/bracelet-6-product.jpg" alt="Bracelet BRQ10009HOC"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/bracelets/bracelet-7-model.png" alt="Bracelet JBF209405"><img class="pcard__img-model" src="../assets/images/bracelets/bracelet-7-product.jpg" alt="Bracelet JBF209405"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/bracelets/bracelet-8-model.png" alt="Bracelet DBL24438"><img class="pcard__img-model" src="../assets/images/bracelets/bracelet-8-product.jpg" alt="Bracelet DBL24438"></div></div>
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/bracelets/bracelet-9-model.png" alt="Bracelet UIBC01303"><img class="pcard__img-model" src="../assets/images/bracelets/bracelet-9-product.jpg" alt="Bracelet UIBC01303"></div></div>
+        </div>
+        <div class="grid-row">
+          <div class="pcard"><div class="pcard__images"><img class="pcard__img-product" src="../assets/images/bracelets/bracelet-10-model.png" alt="Bracelet DBL24487"><img class="pcard__img-model" src="../assets/images/bracelets/bracelet-10-product.jpg" alt="Bracelet DBL24487"></div></div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /coll-body -->
+
+
+  <footer>
+    <div class="footer">
+      <div>
+        <div class="footer__brand" style="font-family:var(--font-brand);font-size:1.6rem;font-weight:normal;letter-spacing:0.03em;text-transform:none">Bharni Gems</div>
+        <div class="footer__tagline">Not Louder. Just Lasting.</div>
+      </div>
+      <div>
+        <p style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">Navigation</p>
+        <ul class="footer__links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="manifesto.html">Manifesto</a></li>
+          <li><a href="vision.html">Vision</a></li>
+          <li><a href="collections.html">Collections</a></li>
+          <li><a href="contact.html">Connect</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <p style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">Contact</p>
+        <p><a href="tel:+91XXXXXXXXXX">+91 XXXXX XXXXX</a><br><a href="mailto:info@bharnigems.com">info@bharnigems.com</a><br><br>Bengaluru, Karnataka</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2025 Bharni Gems. All rights reserved.</p>
+      <div class="footer__social">
+        <a href="https://www.instagram.com/bharni.gems?igsh=OGlmN3N3a3o3ZjUx" target="_blank" rel="noopener" aria-label="Instagram" class="footer__social-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://wa.me/918977133111" target="_blank" rel="noopener" aria-label="WhatsApp" class="footer__social-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+      <p>Diamond Jewellery · B2B Trade</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // ── Scroll to section ─────────────────────────────────────
+    function scrollToSection(id, btn) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const tabsH = document.getElementById('catTabs').offsetHeight;
+      const navH  = document.querySelector('.nav').offsetHeight;
+      const top   = el.getBoundingClientRect().top + window.scrollY - navH - tabsH - 24;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+
+    // ── Active tab tracks scroll position ────────────────────
+    const sections = [...document.querySelectorAll('.cat-section')];
+    const tabs     = [...document.querySelectorAll('.cat-tab')];
+    const tabsBar  = document.getElementById('catTabs');
+
+    function updateActiveTab() {
+      const navH  = document.querySelector('.nav').offsetHeight;
+      const tabsH = tabsBar.offsetHeight;
+      const offset = navH + tabsH + 40;
+      let current = sections[0].id;
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - offset) current = s.id;
+      });
+      tabs.forEach(t => {
+        const matches = t.getAttribute('onclick').includes("'" + current + "'");
+        t.classList.toggle('active', matches);
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveTab, { passive: true });
+    updateActiveTab();
+
+    // ── Hash nav on load ──────────────────────────────────────
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+      setTimeout(() => {
+        const el = document.getElementById(hash);
+        if (el) {
+          const tabsH = tabsBar.offsetHeight;
+          const navH  = document.querySelector('.nav').offsetHeight;
+          window.scrollTo({ top: el.offsetTop - navH - tabsH - 24, behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  </script>
+</body>
+</html>

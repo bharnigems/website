@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Vision — Bharni Gems | Diamond Jewellery Philosophy</title>
+  <meta name="description" content="Bharni Gems' vision: crafting diamond jewellery that endures. Built for retailers who refuse to settle, backed by 18 years of uncompromising quality.">
+  <meta name="keywords" content="B2B diamond jewellery Hyderabad, diamond jewellery manufacturer India, wholesale diamond jewellery, diamond rings, necklaces bangles earrings pendants tanmaniya">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.bharnigems.com/pages/vision.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.bharnigems.com/pages/vision.html">
+  <meta property="og:title" content="Our Vision — Bharni Gems | Diamond Jewellery Philosophy">
+  <meta property="og:description" content="Bharni Gems' vision: crafting diamond jewellery that endures. Built for retailers who refuse to settle, backed by 18 years of uncompromising quality.">
+  <meta property="og:image" content="https://www.bharnigems.com/assets/images/og-image.jpg">
+  <meta property="og:site_name" content="Bharni Gems">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Our Vision — Bharni Gems | Diamond Jewellery Philosophy">
+  <meta name="twitter:description" content="Bharni Gems' vision: crafting diamond jewellery that endures. Built for retailers who refuse to settle, backed by 18 years of uncompromising quality.">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <style>
+    .scroll-video-wrap {
+      position: relative;
+      height: 250vh;
+    }
+
+    .scroll-video-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .scroll-video-sticky video {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .scroll-video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,9,6,0.7) 0%, rgba(10,9,6,0.15) 50%, rgba(10,9,6,0.4) 100%);
+      z-index: 1;
+    }
+
+    .scroll-video-text {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 40px;
+    }
+
+    .scroll-video-text .hero-line-1 {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 4.8rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--champagne);
+      line-height: 1.1;
+      margin-bottom: 8px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+    }
+
+    .scroll-video-text .hero-line-1.visible { opacity: 1; transform: none; }
+
+    .scroll-video-text .hero-line-2 {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 4.8rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--gold-light);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.9s var(--ease-out) 0.2s, transform 0.9s var(--ease-out) 0.2s;
+    }
+
+    .scroll-video-text .hero-line-2.visible { opacity: 1; transform: none; }
+
+    /* ── Vision statement block ─────────────────────────── */
+    .vision-statement {
+      padding: 80px clamp(24px, 6vw, 80px) 64px;
+      border-bottom: 1px solid var(--line);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vision-statement::before {
+      content: 'V';
+      position: absolute;
+      right: -20px; top: 20px;
+      font-family: var(--font-display);
+      font-size: 30rem;
+      font-weight: 300;
+      color: rgba(201,168,76,0.025);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .vision-statement__inner {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .vision-statement__display {
+      margin-bottom: 52px;
+    }
+
+    .vision-statement__line {
+      display: block;
+      font-family: var(--font-statement);
+      font-size: clamp(1.25rem, 2.2vw, 1.9rem);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--champagne);
+      line-height: 1.6;
+    }
+
+    .vision-statement__line--gold {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+
+    .vision-statement__context {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .vision-statement__rule {
+      flex: 1;
+      max-width: 80px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.35;
+    }
+
+    .vision-statement__context-text {
+      font-family: var(--font-display);
+      font-size: clamp(0.85rem, 1.2vw, 1rem);
+      font-style: italic;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Explanation ─────────────────────────────────────── */
+    .vision-explanation {
+      padding: 80px clamp(24px, 6vw, 80px);
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .vision-explanation__left {
+      position: sticky;
+      top: 40px;
+    }
+
+    .vision-explanation__heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+      font-weight: 300;
+      color: var(--champagne);
+      line-height: 1.2;
+    }
+
+    .vision-explanation__heading em {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+
+    .vision-explanation__right { display: flex; flex-direction: column; }
+
+    .vision-para {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0 48px;
+      padding: 56px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+      cursor: default;
+    }
+
+
+    /* ── Vision paragraph (single eyebrow, like manifesto) ── */
+    .vision-para {
+      display: block !important;
+      padding: 56px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .vision-para__num { display: none !important; }
+
+    /* Pillar spine */
+    .vision-pillar {
+      display: block !important;
+    }
+    .vision-pillar__num { display: none !important; }
+
+    .vision-para:first-child { border-top: 1px solid var(--line); }
+    .vision-para:last-child { border-bottom: none; }
+
+    .vision-para__num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 300;
+      color: rgba(201,168,76,0.12);
+      line-height: 1;
+      padding-top: 4px;
+      transition: color 0.4s ease;
+    }
+
+    .vision-para:hover .vision-para__num {
+      color: rgba(201,168,76,0.75);
+    }
+
+    .vision-para__title {
+      font-family: var(--font-label);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 0 0 20px 0;
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .vision-para__title::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1px;
+      background: rgba(201,168,76,0.45);
+      flex-shrink: 0;
+    }
+
+    .vision-para__body {
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+      line-height: 2.05;
+      color: #ffffff;
+      max-width: 72ch;
+      transform: translateX(0);
+      transition: transform 0.35s ease;
+      margin-bottom: 14px;
+    }
+
+    /* The one sentence per block the reader must not miss */
+    .vision-para__key {
+      font-family: var(--font-statement);
+      font-size: clamp(1.1rem, 1.7vw, 1.5rem);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      line-height: 1.7;
+      color: var(--champagne);
+      max-width: 32ch;
+      margin: 4px 0 20px;
+      transform: translateX(0);
+      transition: transform 0.35s ease;
+    }
+    .vision-para__key em { color: var(--gold); font-style: normal; }
+    .vision-para:hover .vision-para__key { transform: translateX(8px); }
+
+    .vision-para__body:last-child { margin-bottom: 0; }
+
+    .vision-para:hover .vision-para__body { transform: translateX(8px); }
+
+    /* ── Closing pull quote ─────────────────────────────── */
+    .vision-pullquote {
+      padding: 80px clamp(24px, 6vw, 80px);
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vision-pullquote::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(201,168,76,0.045) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .vision-pullquote__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+
+    .vision-pullquote__rule {
+      width: 1px;
+      height: 56px;
+      background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.4));
+      margin: 0 auto 52px;
+    }
+
+    .vision-pullquote__rule--bottom {
+      background: linear-gradient(to bottom, rgba(201,168,76,0.4), transparent);
+      margin: 52px auto 0;
+    }
+
+    .vision-pullquote__quote {
+      font-family: var(--font-statement);
+      font-size: clamp(1.25rem, 2.2vw, 1.9rem);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--champagne);
+      line-height: 1.5;
+    }
+
+    .vision-pullquote__quote em { color: var(--gold); }
+
+    .vision-pillars {
+      padding: 80px clamp(24px, 6vw, 80px);
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .vision-pillars__left {
+      position: sticky;
+      top: 40px;
+    }
+
+    .vision-pillars__right { display: flex; flex-direction: column; }
+
+    .vision-pillar {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--line);
+      cursor: default;
+    }
+
+    .vision-pillar:first-child { border-top: 1px solid var(--line); }
+
+    .vision-pillar__num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 300;
+      color: rgba(201,168,76,0.12);
+      line-height: 1;
+      padding-top: 4px;
+      transition: color 0.4s ease;
+    }
+
+    .vision-pillar:hover .vision-pillar__num {
+      color: rgba(201,168,76,0.75);
+    }
+
+    .vision-pillar__title-wrap {
+      display: block;
+      margin-bottom: 0;
+    }
+
+    .vision-pillar__underline { display: none; }
+
+    .vision-pillar__title {
+      font-family: var(--font-statement);
+      font-size: clamp(1.25rem, 2vw, 1.75rem);
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      color: var(--champagne);
+      margin: 0 0 16px 0;
+      line-height: 1.4;
+      transform: translateX(0);
+      transition: transform 0.35s ease;
+    }
+
+    .vision-pillar:hover .vision-pillar__title {
+      transform: translateX(8px);
+    }
+
+    .vision-pillar__text {
+      font-size: clamp(0.92rem, 1.4vw, 1.05rem);
+      letter-spacing: 0.015em;
+      line-height: 1.95;
+      color: rgba(255,255,255,0.88);
+      max-width: 760px;
+      transform: translateX(0);
+      transition: transform 0.35s ease;
+    }
+
+    .vision-pillar:hover .vision-pillar__text {
+      transform: translateX(8px);
+    }
+
+    .vision-pillar__text em { color: rgba(255,255,255,0.88); font-style: normal; }
+
+    .vision-close {
+      padding: 72px clamp(24px, 6vw, 80px);
+      text-align: center;
+      border-top: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vision-close__bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(201,168,76,.05) 0%, transparent 65%);
+    }
+
+    .vision-close__content { position: relative; z-index: 1; max-width: 560px; margin: 0 auto; }
+
+    /* ── Highlights ─────────────────────────────────────── */
+    .hl {
+      color: var(--champagne);
+      font-style: italic;
+      border-bottom: 1px solid rgba(201,168,76,0.35);
+      padding-bottom: 1px;
+    }
+    .hl-gold {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════
+       RESPONSIVE — iPhone 16 Pro & mobile
+    ═══════════════════════════════════════════ */
+
+    /* Tablet */
+    @media (max-width: 900px) {
+      .page-hero    { padding: 100px 40px 64px; }
+      .manifesto-body,
+      .vision-body  { padding: 0 40px 80px; max-width: 100%; }
+      .vision-pillars { grid-template-columns: 1fr 1fr; gap: 24px; }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .page-hero         { padding: 80px 20px 48px; min-height: auto; }
+      .page-hero__eyebrow { font-size: 0.5rem; letter-spacing: 0.22em; }
+      .page-hero__title  { font-size: clamp(2.2rem, 9vw, 3rem); }
+      .page-hero__subtitle { font-size: 0.78rem; line-height: 1.8; }
+
+      .manifesto-body,
+      .vision-body       { padding: 0 20px 72px; max-width: 100%; }
+
+      .manifesto-section,
+      .vision-statement  { padding: 56px 0; }
+
+      .manifesto-section h2,
+      .vision-statement h2 { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+
+      .manifesto-intro   { font-size: clamp(1.05rem, 4.5vw, 1.35rem); line-height: 1.6; }
+
+      .vision-pillars    { grid-template-columns: 1fr; gap: 20px; }
+      .vision-pillar     { padding: 28px 20px; }
+      .vision-pillar__num { font-size: 3rem; }
+      .vision-pillar__title { font-size: 1.05rem; }
+      .vision-pillar__text  { font-size: 0.74rem; }
+
+      .vision-header     { padding: 0 20px 48px; }
+      .vision-obligation { padding: 56px 20px; }
+      .manifesto-clarity { padding: 56px 20px; }
+    }
+
+    /* Small mobile */
+    @media (max-width: 430px) {
+      .page-hero    { padding: 64px 16px 36px; }
+      .manifesto-body,
+      .vision-body  { padding: 0 16px 56px; }
+      .manifesto-clarity { padding: 48px 16px; }
+      .vision-obligation { padding: 48px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a class="nav__logo" href="../index.html"><span style="font-family:var(--font-brand);font-size:1.8rem;font-weight:normal;letter-spacing:0.02em">Bharni Gems</span></a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="manifesto.html">Manifesto</a></li>
+      <li><a href="vision.html">Vision</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="contact.html">Connect</a></li>
+    </ul>
+    <button class="nav__hamburger" id="navHamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- Scroll-driven flower video -->
+  <div class="scroll-video-wrap">
+    <div class="scroll-video-sticky">
+      <video autoplay muted loop playsinline>
+        <source src="../assets/videos/flower_2.mp4" type="video/mp4">
+      </video>
+      <div class="scroll-video-overlay"></div>
+      <div class="scroll-video-text">
+        <span class="hero-line-1" id="heroLine1">Made to be felt,</span>
+        <span class="hero-line-2" id="heroLine2">not merely seen.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Vision Statement ──────────────────────────────────── -->
+  <section class="vision-statement">
+    <div class="vision-statement__inner">
+      <span class="section-label reveal" style="display:block;margin-bottom:16px;">The Standard We Hold Ourselves To</span>
+      <div class="vision-statement__display reveal reveal-delay-1">
+        <span class="vision-statement__line">Every look at every piece, every time,</span>
+        <span class="vision-statement__line">to everyone — should cherish &amp; assure</span>
+        <span class="vision-statement__line">the undisputed pleasure of life,</span>
+        <span class="vision-statement__line vision-statement__line--gold">&amp; justify the very reason of being adorned,</span>
+        <span class="vision-statement__line vision-statement__line--gold">when we serve.</span>
+      </div>
+      <div class="vision-statement__context reveal reveal-delay-2">
+        <div class="vision-statement__rule"></div>
+        <p class="vision-statement__context-text"><span class="hl-gold">This is the only promise we make. Every time.</span></p>
+        <div class="vision-statement__rule"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Explanation ───────────────────────────────────────── -->
+  <section class="vision-explanation">
+    <div class="vision-explanation__left reveal">
+      <span class="section-label" style="display:block;margin-bottom:16px;">What This Means</span>
+      <h2 class="vision-explanation__heading">
+        An obligation<br>that does not<br><em>scale down.</em>
+      </h2>
+    </div>
+    <div class="vision-explanation__right">
+      <div class="vision-para">
+        <div>
+          <h3 class="vision-para__title">What the Obligation Means</h3>
+          <p class="vision-para__key">It is felt in the hand <em>before it is seen in the light.</em></p>
+          <p class="vision-para__body">Beauty alone is not enough. A diamond can be perfectly cut, perfectly set, and still feel like it belongs to someone else. We have spent eighteen years learning the difference.</p><p class="vision-para__body">The obligation we speak of is not merely aesthetic. It is the quiet certainty, felt by the wearer, witnessed by the room, that this piece belongs exactly where it is.</p>
+        </div>
+      </div>
+      <div class="vision-para">
+        <div>
+          <h3 class="vision-para__title">Who It Is For</h3>
+          <p class="vision-para__key">The obligation travels with the piece. <em>It does not stop at our door.</em></p>
+          <p class="vision-para__body">This standard is not held for the end consumer alone. It is held for every retailer who trusts us with their catalogue, their counters, and the reputation they have built with their own customers.</p><p class="vision-para__body">When we deliver to you, we are delivering to them.</p>
+        </div>
+      </div>
+      <div class="vision-para">
+        <div>
+          <h3 class="vision-para__title">What It Demands of Us</h3>
+          <p class="vision-para__key">The obligation does not scale down. <em>Neither do we.</em></p>
+          <p class="vision-para__body">It demands consistency without exception. Every category, every price point, every order — large or small.</p><p class="vision-para__body">There is no version of Bharni that delivers an average piece. Because average is good enough. And we don't like being just good enough.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="vision-pillars">
+    <div class="vision-pillars__left reveal">
+      <span class="section-label" style="display:block;margin-bottom:16px;">How We Live It</span>
+      <h2 class="vision-explanation__heading">
+        The 6<br><em>Pillars.</em>
+      </h2>
+    </div>
+    <div class="vision-pillars__right">
+
+      <div class="vision-pillar">
+        <div>
+          <h2 class="vision-pillar__title">Every Look. Every Piece. Every Time. Every One.</h2>
+          <p class="vision-pillar__text">Pick up any piece we make. Any one. <span class="hl-gold">It should stop you.</span><br><br>
+          Not some of them. All of them.<br>
+          Not some of you. All of you.<br>
+          Not one time. Every time.<br>
+          Not one look. Every look.</p>
+        </div>
+      </div>
+
+      <div class="vision-pillar">
+        <div>
+          <h2 class="vision-pillar__title">Cherish</h2>
+          <p class="vision-pillar__text">A piece of jewellery should do one thing above everything else — <span class="hl-gold">make the person wearing it feel that life, right now, is worth celebrating.</span> That is what we mean by cherish. That is what we mean by assure.</p>
+        </div>
+      </div>
+
+      <div class="vision-pillar">
+        <div>
+          <h2 class="vision-pillar__title">Undisputed</h2>
+          <p class="vision-pillar__text"><span class="hl-gold">A room full of different people. Different tastes. Different budgets. Different opinions.</span> <span class="hl">One piece. No debate. That is what we build for.</span></p>
+        </div>
+      </div>
+
+      <div class="vision-pillar">
+        <div>
+          <h2 class="vision-pillar__title">Justify</h2>
+          <p class="vision-pillar__text"><span class="hl-gold">The product does not lie. Shortcuts do.</span> <span class="hl">We let the product speak.</span></p>
+        </div>
+      </div>
+
+      <div class="vision-pillar">
+        <div>
+          <h2 class="vision-pillar__title">Adorned</h2>
+          <p class="vision-pillar__text"><span class="hl-gold">Jewellery should not wait for the occasion. It should create one.</span> <span class="hl">When you wear Bharni, the occasion has already begun.</span></p>
+        </div>
+      </div>
+
+      <div class="vision-pillar">
+        <div>
+          <h2 class="vision-pillar__title">When We Serve</h2>
+          <p class="vision-pillar__text">When we serve, the piece is only part of what we deliver. <span class="hl-gold">The certainty that what we said we would do, we did. Completely. Without being asked twice.</span></p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Karma Animation ───────────────────────────────────── -->
+  <div class="vision-pullquote">
+    <div class="vision-pullquote__inner reveal" style="display:flex;flex-direction:column;align-items:center;padding:80px 24px;">
+      <canvas id="karma-canvas" style="display:block;width:min(460px,80vw);height:min(460px,80vw);"></canvas>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    const cv = document.getElementById('karma-canvas');
+    const ctx = cv.getContext('2d');
+    function resize(){
+      const size = Math.min(window.innerWidth * 0.8, 460);
+      cv.width = size; cv.height = size;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+    const eo  = t => 1 - Math.pow(1-t, 3);
+    const eio = t => t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
+    const cl  = (v,a,b) => Math.max(a, Math.min(b,v));
+    const ph  = (s,e) => cl((elapsed-s)/(e-s), 0, 1);
+    const CYCLE = 14.0;
+    const trail = [];
+    let elapsed = 0, last = null;
+    function R(){ return cv.width * 0.36; }
+    function threadPt(f){
+      const r = (1-f)*R() + f*2;
+      const a = f*Math.PI*2*3.8 - Math.PI/2;
+      return [cv.width/2 + Math.cos(a)*r, cv.height/2 + Math.sin(a)*r];
+    }
+    function draw(ts){
+      if(!last) last = ts;
+      const dt = Math.min((ts-last)/1000, 0.05);
+      last = ts; elapsed += dt;
+      if(elapsed > CYCLE){ elapsed -= CYCLE; trail.length = 0; }
+      const cx = cv.width/2, cy = cv.height/2, r = R();
+      ctx.clearRect(0,0,cv.width,cv.height);
+      ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2);
+      ctx.strokeStyle = 'rgba(201,168,76,0.07)'; ctx.lineWidth = 0.7; ctx.stroke();
+      const cometProgress = ph(0,3), cometFade = eo(ph(2.4,3.1));
+      if(cometProgress > 0 && elapsed < 3.5){
+        const angle = -Math.PI/2 + cometProgress*Math.PI*2*1.8;
+        const ox = cx+Math.cos(angle)*r, oy = cy+Math.sin(angle)*r;
+        trail.push({x:ox,y:oy,born:elapsed});
+        while(trail.length && elapsed-trail[0].born > 1.6) trail.shift();
+        const fa = 1-cometFade;
+        trail.forEach(p => {
+          const age=(elapsed-p.born)/1.6, a=(1-age)*0.42*fa, s=0.4+(1-age)*2.2;
+          ctx.beginPath(); ctx.arc(p.x,p.y,s,0,Math.PI*2);
+          ctx.fillStyle=`rgba(201,168,76,${a})`; ctx.fill();
+        });
+        if(cometFade < 0.6){
+          const ga=(1-cometFade)*0.18;
+          const grad=ctx.createRadialGradient(ox,oy,0,ox,oy,12);
+          grad.addColorStop(0,`rgba(201,168,76,${ga*2})`);
+          grad.addColorStop(1,'rgba(201,168,76,0)');
+          ctx.beginPath(); ctx.arc(ox,oy,12,0,Math.PI*2);
+          ctx.fillStyle=grad; ctx.fill();
+        }
+      }
+      const threadProgress = eio(ph(2.5,6.5));
+      const threadAlpha = eo(ph(2.5,4.2))*(1-eo(ph(5.8,6.5)))*0.72;
+      if(threadProgress > 0){
+        ctx.save(); ctx.globalAlpha=threadAlpha;
+        ctx.strokeStyle='#c9a84c'; ctx.lineWidth=cv.width*0.0028;
+        ctx.lineCap='round'; ctx.lineJoin='round'; ctx.beginPath();
+        for(let i=0;i<=300*threadProgress;i++){
+          const [px,py]=threadPt(i/300); i===0?ctx.moveTo(px,py):ctx.lineTo(px,py);
+        }
+        ctx.stroke(); ctx.restore();
+      }
+      const wordAlpha = eo(ph(6.0,8.2))*(1-eo(ph(10.0,11.2)));
+      if(wordAlpha > 0){
+        ctx.save(); ctx.globalAlpha=wordAlpha*0.92;
+        ctx.font=`${cv.width*0.115}px serif`;
+        ctx.fillStyle='#c9a84c'; ctx.textAlign='center'; ctx.textBaseline='middle';
+        ctx.fillText('कर्म',cx,cy); ctx.restore();
+      }
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+  })();
+  </script>
+
+  <div class="vision-close">
+    <div class="vision-close__bg"></div>
+    <div class="vision-close__content">
+      <p class="reveal" style="font-family:var(--font-display);font-style:italic;color:#ffffff;font-size:0.95rem;margin-bottom:24px;">If none of this surprised you —</p>
+      <h2 class="display-2 reveal reveal-delay-1">Carry the Standard.</h2>
+      <br>
+      <a href="contact.html" class="btn reveal reveal-delay-2">
+        <span>Connect</span>
+        <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h14M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer">
+      <div>
+        <div class="footer__brand" style="font-family:var(--font-brand);font-size:1.6rem;font-weight:normal;letter-spacing:0.03em;text-transform:none">Bharni Gems</div>
+        <div class="footer__tagline">Not Louder. Just Lasting.</div>
+      </div>
+      <div>
+        <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Navigation</p>
+        <ul class="footer__links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="manifesto.html">Manifesto</a></li>
+          <li><a href="vision.html">Vision</a></li>
+          <li><a href="collections.html">Collections</a></li>
+          <li><a href="contact.html">Connect</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Contact</p>
+        <p><a href="tel:+918977133111">+91 89771 33111</a><br><a href="mailto:accounts@bharnigems.com">accounts@bharnigems.com</a><br><br>Hyderabad, Telangana</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2025 Bharni Gems. All rights reserved.</p>
+      <div class="footer__social">
+        <a href="https://www.instagram.com/bharni.gems?igsh=OGlmN3N3a3o3ZjUx" target="_blank" rel="noopener" aria-label="Instagram" class="footer__social-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://wa.me/918977133111" target="_blank" rel="noopener" aria-label="WhatsApp" class="footer__social-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+      <p>Diamond Jewellery · B2B Trade</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => { document.getElementById('heroLine1').classList.add('visible'); }, 300);
+      setTimeout(() => { document.getElementById('heroLine2').classList.add('visible'); }, 600);
+    });
+  </script>
+</body>
+</html>

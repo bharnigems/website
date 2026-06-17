@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Manifesto — Bharni Gems | The 7 P's of Diamond Jewellery</title>
+  <meta name="description" content="The Bharni Gems manifesto: 18 years of B2B diamond jewellery built on 7 principles — Product, Price, People, Promotion, Packaging, Position, Place.">
+  <meta name="keywords" content="B2B diamond jewellery Hyderabad, diamond jewellery manufacturer India, wholesale diamond jewellery, diamond rings, necklaces bangles earrings pendants tanmaniya">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.bharnigems.com/pages/manifesto.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.bharnigems.com/pages/manifesto.html">
+  <meta property="og:title" content="Our Manifesto — Bharni Gems | The 7 P's of Diamond Jewellery">
+  <meta property="og:description" content="The Bharni Gems manifesto: 18 years of B2B diamond jewellery built on 7 principles — Product, Price, People, Promotion, Packaging, Position, Place.">
+  <meta property="og:image" content="https://www.bharnigems.com/assets/images/og-image.jpg">
+  <meta property="og:site_name" content="Bharni Gems">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Our Manifesto — Bharni Gems | The 7 P's of Diamond Jewellery">
+  <meta name="twitter:description" content="The Bharni Gems manifesto: 18 years of B2B diamond jewellery built on 7 principles — Product, Price, People, Promotion, Packaging, Position, Place.">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <style>
+    /* ── Scroll video section ─────────────────────────────── */
+    .scroll-video-wrap {
+      position: relative;
+      height: 250vh;
+    }
+
+    .scroll-video-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .scroll-video-sticky video {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .scroll-video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,9,6,0.7) 0%, rgba(10,9,6,0.15) 50%, rgba(10,9,6,0.4) 100%);
+      z-index: 1;
+    }
+
+    .scroll-video-text {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 40px;
+    }
+
+    .scroll-video-text h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 300;
+      color: var(--champagne);
+      line-height: 1.05;
+      margin-bottom: 16px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+    }
+
+    .scroll-video-text h1.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .scroll-video-text p {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--champagne-2);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.8s var(--ease-out) 0.2s, transform 0.8s var(--ease-out) 0.2s;
+    }
+
+    .scroll-video-text p.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── Article body ─────────────────────────────────────── */
+    .manifesto-body {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px clamp(24px, 6vw, 80px) 120px;
+    }
+
+    .manifesto-body h2 {
+      font-family: var(--font-label);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 0 0 20px 0;
+      padding-top: 0;
+      border-top: none;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .manifesto-body h2::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1px;
+      background: rgba(201,168,76,0.45);
+      flex-shrink: 0;
+    }
+
+    .manifesto-body h2:first-of-type {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .manifesto-body p {
+      font-size: clamp(0.92rem, 1.4vw, 1.05rem);
+      line-height: 1.95;
+      letter-spacing: 0.015em;
+      color: rgba(255,255,255,0.88);
+      max-width: 100%;
+      width: 100%;
+      margin-bottom: 28px;
+    }
+
+    .manifesto-section {
+      display: block;
+      padding: 72px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .manifesto-section:last-of-type { border-bottom: none; }
+    .manifesto-section__content { width: 100%; }
+
+    .manifesto-body p strong {
+      color: var(--champagne-2);
+      font-weight: 400;
+    }
+
+    .manifesto-body p em {
+      color: var(--gold);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    /* The one sentence per section the reader must not miss */
+    .manifesto-body .t-statement {
+      font-size: clamp(1.55rem, 2.8vw, 2.4rem);
+      margin: 20px 0 32px;
+      max-width: 100%;
+      width: 100%;
+      line-height: 1.45;
+      letter-spacing: 0.03em;
+    }
+
+    .manifesto-intro {
+      font-family: var(--font-statement);
+      font-size: clamp(1.7rem, 3.2vw, 2.8rem);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      line-height: 1.65;
+      color: #ffffff;
+      margin-bottom: 72px;
+      padding-bottom: 72px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .manifesto-intro .intro-quiet {
+      display: block;
+      font-family: var(--font-body);
+      font-style: normal;
+      font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+      letter-spacing: 0.01em;
+      line-height: 2;
+      color: rgba(255,255,255,0.85);
+      max-width: 100%;
+      width: 100%;
+      margin-bottom: 32px;
+    }
+
+    .manifesto-pull {
+      font-family: var(--font-statement);
+      font-size: clamp(1.4rem, 2.4vw, 2rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--champagne);
+      padding: 8px 0;
+      margin: 40px 0;
+      line-height: 1.5;
+    }
+
+    .manifesto-pull em {
+      color: rgba(201,168,76,0.75);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    .seven-p {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      margin: 40px 0;
+    }
+
+    .seven-p__item {
+      background: var(--black);
+      padding: 32px 28px;
+      transition: background 0.3s;
+    }
+    .seven-p__item:hover { background: var(--obsidian); }
+
+    .seven-p__num {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: rgba(201,168,76,0.2);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .seven-p__title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--champagne);
+      margin-bottom: 8px;
+    }
+
+    .seven-p__text {
+      font-size: 0.78rem;
+      color: #ffffff;
+      line-height: 1.75;
+    }
+
+    /* ── Highlights ─────────────────────────────────────── */
+    .hl {
+      color: var(--champagne);
+      font-style: italic;
+      border-bottom: 1px solid rgba(201,168,76,0.35);
+      padding-bottom: 1px;
+    }
+    .hl-gold {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════
+       RESPONSIVE — iPhone 16 Pro & mobile
+    ═══════════════════════════════════════════ */
+
+    /* Tablet */
+    @media (max-width: 900px) {
+      .page-hero    { padding: 100px 40px 64px; }
+      .manifesto-body,
+      .vision-body  { padding: 0 40px 80px; max-width: 100%; }
+      .vision-pillars { grid-template-columns: 1fr 1fr; gap: 24px; }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .page-hero         { padding: 80px 20px 48px; min-height: auto; }
+      .page-hero__eyebrow { font-size: 0.5rem; letter-spacing: 0.22em; }
+      .page-hero__title  { font-size: clamp(2.2rem, 9vw, 3rem); }
+      .page-hero__subtitle { font-size: 0.78rem; line-height: 1.8; }
+
+      .manifesto-body,
+      .vision-body       { padding: 0 20px 72px; max-width: 100%; }
+
+      .manifesto-section,
+      .vision-statement  { padding: 56px 0; }
+
+      .manifesto-section h2,
+      .vision-statement h2 { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+
+      .manifesto-intro   { font-size: clamp(1.05rem, 4.5vw, 1.35rem); line-height: 1.6; }
+
+      .vision-pillars    { grid-template-columns: 1fr; gap: 20px; }
+      .vision-pillar     { padding: 28px 20px; }
+      .vision-pillar__num { font-size: 3rem; }
+      .vision-pillar__title { font-size: 1.05rem; }
+      .vision-pillar__text  { font-size: 0.74rem; }
+
+      .vision-header     { padding: 0 20px 48px; }
+      .vision-obligation { padding: 56px 20px; }
+      .manifesto-clarity { padding: 56px 20px; }
+    }
+
+    /* Small mobile */
+    @media (max-width: 430px) {
+      .page-hero    { padding: 64px 16px 36px; }
+      .manifesto-body,
+      .vision-body  { padding: 0 16px 56px; }
+      .manifesto-clarity { padding: 48px 16px; }
+      .vision-obligation { padding: 48px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a class="nav__logo" href="../index.html"><span style="font-family:var(--font-brand);font-size:1.8rem;font-weight:normal;letter-spacing:0.02em">Bharni Gems</span></a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="manifesto.html">Manifesto</a></li>
+      <li><a href="vision.html">Vision</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="contact.html">Connect</a></li>
+    </ul>
+    <button class="nav__hamburger" id="navHamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- Scroll-driven flower video -->
+  <div class="scroll-video-wrap">
+    <div class="scroll-video-sticky">
+      <video autoplay muted loop playsinline>
+        <source src="../assets/videos/flower_1.mp4" type="video/mp4">
+      </video>
+      <div class="scroll-video-overlay"></div>
+      <div class="scroll-video-text">
+        <h1 id="heroTitle">The Manifesto</h1>
+        <p id="heroSub">Why Bharni. What we believe. How we work.</p>
+      </div>
+    </div>
+  </div>
+
+  <article class="manifesto-body">
+
+    <p class="manifesto-intro reveal">
+      <span class="intro-quiet">Let's be honest. You don't need another diamond jewellery brand. There are hundreds of them — established ones, ones with longer histories and deeper pockets than ours.</span>
+      So why Bharni? <em style="color:var(--gold);font-style:normal">We asked ourselves that question before anyone else could.</em>
+    </p>
+
+    <div class="manifesto-section reveal">
+      <div class="manifesto-section__content">
+        <h2>The Last Two Percent</h2>
+        <p class="t-statement">The gap between 98 and 100 is the only place <em>we are truly comfortable.</em></p>
+        <p class="reveal has-dropcap">Good enough has never been good enough here. Not at 90. Not at 95. Not at 98. The gap between 98 and 100 is where most people stop looking.</p>
+        <p class="reveal">We are chasing something most people have decided isn't worth chasing. Eighteen years in — <span class="hl">we still think they're wrong.</span></p>
+      </div>
+    </div>
+
+    <div class="manifesto-section reveal">
+      <div class="manifesto-section__content">
+        <h2>Clarity</h2>
+        <p class="t-statement">The clearest diamonds don't just look better. <em>They are better.</em></p>
+        <p class="reveal has-dropcap">A diamond's worth is measured by what it doesn't hide. Every inclusion — every flaw within the stone — takes away at its brilliance, pulling its value down.</p>
+        <p class="reveal">We hold our business to the same standard. We don't rewrite our policies to suit the moment. We don't bend our principles when circumstances change. We are <span class="hl-gold">crisp, clear, and consistent</span> — in every promise we make, every policy we stand by, and every interaction we have with you.</p>
+      </div>
+    </div>
+
+    <div class="manifesto-section reveal">
+      <div class="manifesto-section__content">
+        <h2>For All. For Always.</h2>
+        <p class="t-statement">Such moments deserve <em>nothing less than extraordinary.</em></p>
+        <p class="reveal has-dropcap">A woman's journey with jewellery is deeply spiritual. Each piece, a prayer. Each occasion, a ritual. Each choice, a quiet declaration of self.</p>
+        <p class="reveal">Every piece we create is an act of devotion. To the craft. To the moment. To the person who will one day call it theirs. We sell only what we love. Not what sells. Not what trends. We ask only one question — is it worthy? Everything else is noise.</p>
+      </div>
+    </div>
+
+    <div class="manifesto-section reveal">
+      <div class="manifesto-section__content">
+        <h2>Not Louder. Just Lasting.</h2>
+        <p class="t-statement">Would we give this <em>to our own family?</em></p>
+        <p class="reveal has-dropcap">This industry is loud. New designs every week. Newer trends every month. Everyone screaming for your attention, your trust, your money. We refused to play that game.</p>
+        <p class="reveal">Every piece we make, we ask that one question. If the answer is anything less than yes, <span class="hl">it doesn't leave our hands.</span></p>
+      </div>
+    </div>
+
+    <div class="manifesto-section reveal">
+      <div class="manifesto-section__content">
+        <h2>The Ecosystem</h2>
+        <p class="t-statement">Everyone rises. <em>Or no one does.</em></p>
+        <p class="reveal has-dropcap">At Bharni, we believe in three gods. <em>The Customer. The Vendor. The Team.</em> All three sacred. All three non-negotiable.</p>
+        <p class="reveal">Our customers trust us. Our vendors make that trust possible. Our team makes it consistent. None of it works without the other. That is why all three are sacred.</p>
+      </div>
+    </div>
+
+    <div class="manifesto-section reveal">
+      <div class="manifesto-section__content">
+        <h2>Evolution</h2>
+        <p class="t-statement">The only thing that will never change — <em>is our obsession with getting it right.</em></p>
+        <p class="reveal has-dropcap">Nobody builds a business thinking it'll die. But most of them do — not because of bad products, but because somewhere between the first win and the hundredth, they stopped asking the hard questions.</p>
+        <p class="reveal">At Bharni, we are obsessed with tomorrow. Not in a restless, chasing-every-trend way — but in the way that keeps you up at night asking: <span class="hl">are we still relevant? Are we still earning our place?</span> Bharni will look different in 10 years. Different in 20. And we are proud of that.</p>
+      </div>
+    </div>
+
+    
+    <div class="divider reveal" style="margin-top:64px"><div class="divider__diamond"></div></div>
+
+    <div style="text-align:center; margin-top:48px" class="reveal">
+      <a href="vision.html" class="btn">
+        <span>Read Our Vision</span>
+        <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h14M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      </a>
+    </div>
+
+  </article>
+
+  <footer>
+    <div class="footer">
+      <div>
+        <div class="footer__brand" style="font-family:var(--font-brand);font-size:1.6rem;font-weight:normal;letter-spacing:0.03em;text-transform:none">Bharni Gems</div>
+        <div class="footer__tagline">Not Louder. Just Lasting.</div>
+      </div>
+      <div>
+        <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Navigation</p>
+        <ul class="footer__links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="manifesto.html">Manifesto</a></li>
+          <li><a href="vision.html">Vision</a></li>
+          <li><a href="collections.html">Collections</a></li>
+          <li><a href="contact.html">Connect</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Contact</p>
+        <p><a href="tel:+918977133111">+91 89771 33111</a><br><a href="mailto:accounts@bharnigems.com">accounts@bharnigems.com</a><br><br>Hyderabad, Telangana</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2025 Bharni Gems. All rights reserved.</p>
+      <div class="footer__social">
+        <a href="https://www.instagram.com/bharni.gems?igsh=OGlmN3N3a3o3ZjUx" target="_blank" rel="noopener" aria-label="Instagram" class="footer__social-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://wa.me/918977133111" target="_blank" rel="noopener" aria-label="WhatsApp" class="footer__social-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+      <p>Diamond Jewellery · B2B Trade</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // Animate hero text on load
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('heroTitle').classList.add('visible');
+        document.getElementById('heroSub').classList.add('visible');
+      }, 300);
+    });
+  </script>
+</body>
+</html>

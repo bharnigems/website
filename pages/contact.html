@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connect — Bharni Gems | B2B Diamond Jewellery Hyderabad</title>
+  <meta name="description" content="Interested in stocking Bharni Gems? Reach out for trade pricing, catalogues and partnership terms. B2B diamond jewellery from Hyderabad.">
+  <meta name="keywords" content="B2B diamond jewellery Hyderabad, diamond jewellery manufacturer India, wholesale diamond jewellery, diamond rings, necklaces bangles earrings pendants tanmaniya">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.bharnigems.com/pages/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.bharnigems.com/pages/contact.html">
+  <meta property="og:title" content="Connect — Bharni Gems | B2B Diamond Jewellery Hyderabad">
+  <meta property="og:description" content="Interested in stocking Bharni Gems? Reach out for trade pricing, catalogues and partnership terms. B2B diamond jewellery from Hyderabad.">
+  <meta property="og:image" content="https://www.bharnigems.com/assets/images/og-image.jpg">
+  <meta property="og:site_name" content="Bharni Gems">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Connect — Bharni Gems | B2B Diamond Jewellery Hyderabad">
+  <meta name="twitter:description" content="Interested in stocking Bharni Gems? Reach out for trade pricing, catalogues and partnership terms. B2B diamond jewellery from Hyderabad.">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <style>
+
+    /* ── Video Hero ───────────────────────────────────────── */
+    .contact-hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-hero__video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .contact-hero__overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        radial-gradient(ellipse 100% 100% at 50% 50%,
+          rgba(5,4,3,0.3) 0%,
+          rgba(5,4,3,0.65) 100%
+        ),
+        linear-gradient(to bottom,
+          rgba(5,4,3,0.5) 0%,
+          rgba(5,4,3,0.2) 30%,
+          rgba(5,4,3,0.2) 70%,
+          rgba(5,4,3,0.85) 100%
+        );
+    }
+
+    .contact-hero__content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 40px;
+      opacity: 0;
+      animation: fadeIn 1.6s ease 0.8s forwards;
+    }
+
+    .contact-hero__label {
+      font-size: 0.56rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.55);
+      display: block;
+      margin-bottom: 24px;
+    }
+
+    .contact-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 300;
+      color: var(--champagne);
+      line-height: 1.05;
+    }
+
+    .contact-hero__title em {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+
+    /* Scroll indicator */
+    .contact-hero__scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      animation: fadeIn 1s ease 2.5s forwards;
+    }
+
+    .contact-hero__scroll-text {
+      font-size: 0.52rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.4);
+    }
+
+    .contact-hero__scroll-track {
+      width: 1px;
+      height: 48px;
+      background: rgba(201,168,76,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-hero__scroll-thumb {
+      position: absolute;
+      top: -50%; left: 0;
+      width: 100%; height: 50%;
+      background: var(--gold);
+      animation: scrollThumb 2s ease-in-out 3s infinite;
+    }
+
+    /* ── Marquee ──────────────────────────────────────────── */
+
+
+
+
+    /* ── Contact Body ─────────────────────────────────────── */
+    .contact-body {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      min-height: 80vh;
+    }
+
+    /* Left panel */
+    .contact-info {
+      padding: 100px 80px;
+      border-right: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .contact-info__statement {
+      font-family: var(--font-statement);
+      font-size: clamp(1.2rem, 1.9vw, 1.6rem);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--champagne-2);
+      line-height: 1.7;
+      margin-bottom: 64px;
+    }
+    .contact-info__statement .quiet {
+      display: block;
+      font-family: var(--font-body);
+      font-style: normal;
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+      line-height: 2;
+      color: #ffffff;
+      margin-top: 20px;
+    }
+
+    .contact-info__statement em {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+
+    .contact-detail {
+      margin-bottom: 36px;
+    }
+
+    .contact-detail__label {
+      font-size: 0.55rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.6;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .contact-detail__value {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--champagne);
+      line-height: 1.5;
+    }
+
+    .contact-detail__value a {
+      transition: color 0.2s;
+    }
+
+    .contact-detail__value a:hover { color: var(--gold-light); }
+
+    .contact-info__hours {
+      padding-top: 36px;
+      border-top: 1px solid var(--line);
+      margin-top: 40px;
+    }
+
+    .contact-info__hours p {
+      font-size: 0.75rem;
+      color: #ffffff;
+      line-height: 1.9;
+    }
+
+    /* Right panel — form */
+    .contact-form-wrap {
+      padding: 100px 80px;
+    }
+
+    .contact-form__heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 300;
+      color: var(--champagne);
+      margin-bottom: 8px;
+    }
+
+    .contact-form__sub {
+      font-size: 0.92rem;
+      color: #ffffff;
+      margin-bottom: 52px;
+      letter-spacing: 0.04em;
+    }
+
+    .form-group { margin-bottom: 28px; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.55rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.4);
+      margin-bottom: 10px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--line);
+      padding: 10px 0;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--champagne);
+      outline: none;
+      transition: border-color 0.3s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: rgba(240,230,200,0.15); }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus { border-bottom-color: var(--gold); }
+
+    .form-select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a6f2e' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 4px center;
+      padding-right: 24px;
+    }
+
+    .form-select option { background: var(--obsidian); color: var(--champagne); }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 90px;
+      line-height: 1.7;
+    }
+
+    .form-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .form-check input[type="checkbox"] {
+      appearance: none;
+      width: 14px; height: 14px;
+      border: 1px solid rgba(201,168,76,0.3);
+      flex-shrink: 0;
+      margin-top: 2px;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.2s;
+    }
+
+    .form-check input[type="checkbox"]:checked {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .form-check input[type="checkbox"]:checked::after {
+      content: '';
+      position: absolute;
+      top: 1px; left: 4px;
+      width: 4px; height: 7px;
+      border: 1.5px solid var(--black);
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg);
+    }
+
+    .form-check label {
+      font-size: 0.92rem;
+      color: #ffffff;
+      line-height: 1.7;
+      cursor: pointer;
+    }
+
+    .form-submit {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
+    }
+
+    .form-submit__note {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #ffffff;
+      max-width: 200px;
+      line-height: 1.6;
+    }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 80px 0;
+    }
+
+    .form-success__icon {
+      width: 48px; height: 48px;
+      border: 1px solid var(--gold);
+      transform: rotate(45deg);
+      margin: 0 auto 28px;
+    }
+
+    .form-success h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--champagne);
+      margin-bottom: 12px;
+    }
+
+    .form-success p {
+      font-size: 0.82rem;
+      color: #ffffff;
+    }
+
+    /* ── Keyframes ────────────────────────────────────────── */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes scrollThumb {
+      0%   { top: -50%; }
+      100% { top: 100%; }
+    }
+
+    /* ── Responsive ───────────────────────────────────────── */
+
+    @media (max-width: 768px) {
+      .contact-hero  { padding: 80px 20px 48px; min-height: auto; }
+      .contact-body  { padding: 0 20px 72px; }
+      .contact-form  { padding: 40px 20px; }
+      .form-grid     { grid-template-columns: 1fr; }
+      .contact-info  { grid-template-columns: 1fr; gap: 24px; }
+    }
+
+    @media (max-width: 430px) {
+      .contact-hero  { padding: 64px 16px 36px; }
+      .contact-body  { padding: 0 16px 56px; }
+      .contact-form  { padding: 32px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a class="nav__logo" href="../index.html"><span style="font-family:var(--font-brand);font-size:1.8rem;font-weight:normal;letter-spacing:0.02em">Bharni Gems</span></a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="manifesto.html">Manifesto</a></li>
+      <li><a href="vision.html">Vision</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="contact.html" class="active">Connect</a></li>
+    </ul>
+    <button class="nav__hamburger" id="navHamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- ── Video Hero ──────────────────────────────────────── -->
+  <section class="contact-hero" id="contactHero">
+    <video class="contact-hero__video" id="heroVideo" muted playsinline>
+      <source src="../assets/videos/contact_hero.mp4" type="video/mp4">
+    </video>
+    <div class="contact-hero__overlay"></div>
+
+    <div class="contact-hero__content">
+      <span class="contact-hero__label">For Retailers Only</span>
+      <h1 class="contact-hero__title">
+        Begin the<br><em>Conversation.</em>
+      </h1>
+    </div>
+
+    <div class="contact-hero__scroll">
+      <span class="contact-hero__scroll-text">Scroll</span>
+      <div class="contact-hero__scroll-track">
+        <div class="contact-hero__scroll-thumb"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Marquee ─────────────────────────────────────────── -->
+  <!-- ── Contact Body ────────────────────────────────────── -->
+  <div class="contact-body">
+
+    <aside class="contact-info reveal">
+      <div>
+        <p class="contact-info__statement">
+          If you know the difference —
+          <span class="quiet">Talk to us.</span>
+        </p>
+
+        <div class="contact-detail">
+          <span class="contact-detail__label">Phone</span>
+          <div class="contact-detail__value">
+            <a href="tel:+918977133111">+91 89771 33111</a>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <span class="contact-detail__label">Email</span>
+          <div class="contact-detail__value">
+            <a href="mailto:accounts@bharnigems.com">accounts@bharnigems.com</a>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <span class="contact-detail__label">Office</span>
+          <div class="contact-detail__value">
+            Hyderabad, Telangana<br>India
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-info__hours">
+        <p>
+          Monday – Saturday &nbsp;·&nbsp; 10AM – 6PM IST<br>
+          We respond within one business day.
+        </p>
+      </div>
+    </aside>
+
+    <div class="contact-form-wrap reveal reveal-delay-1">
+      <h2 class="contact-form__heading">Connect</h2>
+      <p class="contact-form__sub">All fields marked * are required</p>
+
+      <form id="contactForm" onsubmit="handleSubmit(event)">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="name">Full Name *</label>
+            <input class="form-input" type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="store">Store / Business Name *</label>
+            <input class="form-input" type="text" id="store" name="store" placeholder="Your store name" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="phone">Mobile Number *</label>
+            <input class="form-input" type="tel" id="phone" name="phone" placeholder="+91 89771 33111" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="city">City *</label>
+            <input class="form-input" type="text" id="city" name="city" placeholder="e.g. Hyderabad, Mumbai" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="message">Message</label>
+          <textarea class="form-textarea" id="message" name="message" placeholder="Tell us about your store and what you're looking for..."></textarea>
+        </div>
+
+        <div class="form-check">
+          <input type="checkbox" id="consent" name="consent" required>
+          <label for="consent">I agree to be contacted by Bharni Gems regarding trade enquiries and catalogue updates.</label>
+        </div>
+
+        <div class="form-submit">
+          <p class="form-submit__note">We respond within one business day.</p>
+          <button type="submit" class="btn">
+            <span>Begin the Conversation</span>
+            <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
+              <path d="M1 5h14M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        <div class="form-success__icon"></div>
+        <h3>Enquiry Received</h3>
+        <p>Thank you. We'll be in touch within one business day.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer">
+      <div>
+        <div class="footer__brand" style="font-family:var(--font-brand);font-size:1.6rem;font-weight:normal;letter-spacing:0.03em;text-transform:none">Bharni Gems</div>
+        <div class="footer__tagline">Not Louder. Just Lasting.</div>
+        <br>
+        <p style="font-size:0.72rem;color:#ffffff;line-height:1.8">B2B Diamond Jewellery<br>Hyderabad, Telangana</p>
+      </div>
+      <div>
+        <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Navigation</p>
+        <ul class="footer__links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="manifesto.html">Manifesto</a></li>
+          <li><a href="vision.html">Vision</a></li>
+          <li><a href="collections.html">Collections</a></li>
+          <li><a href="contact.html">Connect</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Contact</p>
+        <p>
+          <a href="tel:+918977133111">+91 89771 33111</a><br>
+          <a href="mailto:accounts@bharnigems.com">accounts@bharnigems.com</a><br><br>
+          Hyderabad, Telangana<br>India
+        </p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2025 Bharni Gems. All rights reserved.</p>
+      <div class="footer__social">
+        <a href="https://www.instagram.com/bharni.gems?igsh=OGlmN3N3a3o3ZjUx" target="_blank" rel="noopener" aria-label="Instagram" class="footer__social-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://wa.me/918977133111" target="_blank" rel="noopener" aria-label="WhatsApp" class="footer__social-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+      <p>Diamond Jewellery · B2B Trade</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    const video = document.getElementById('heroVideo');
+
+    video.play();
+
+    video.addEventListener('ended', () => {
+      const marquee = document.querySelector('.marquee-strip');
+      if (marquee) {
+        marquee.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
